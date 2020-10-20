@@ -1,14 +1,34 @@
 import React from "react";
-import Contact from "./component/Contact";
-import ContactHeader from "./component/Header";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import "./scss/style.scss";
+const Layout = React.lazy(() => import("./Layout"));
+const AddContact = React.lazy(() => import("./component/AddContact"));
+const loading = (
+  <div className="pt-3 text-center">
+    <div className="sk-spinner sk-spinner-pulse"></div>
+  </div>
+);
 
 function App() {
   return (
-    <>
-      <ContactHeader />
-      <Contact />
-    </>
+    <HashRouter>
+      <React.Suspense fallback={loading}>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            name="My Contact"
+            render={(props) => <Layout {...props} />}
+          />
+          <Route
+            exact
+            path="/Add-Contact"
+            name="Add Contact"
+            render={(props) => <AddContact {...props} />}
+          />
+        </Switch>
+      </React.Suspense>
+    </HashRouter>
   );
 }
 
