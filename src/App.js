@@ -1,10 +1,14 @@
 import React from "react";
+import Contact from "./component/Contact";
+import ContactHeader from "./component/Header";
+import "./scss/style.scss";
 
 function App() {
   return (
-    <div>
-      <h1>Hello World !!</h1>
-    </div>
+    <>
+      <ContactHeader />
+      <Contact />
+    </>
   );
 }
 
