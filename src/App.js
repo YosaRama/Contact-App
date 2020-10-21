@@ -5,6 +5,7 @@ import "./scss/style.scss";
 const Layout = React.lazy(() => import("./Layout"));
 const AddContact = React.lazy(() => import("./component/AddContact"));
 const EditContact = React.lazy(() => import("./component/EditContact"));
+const ShowProfile = React.lazy(() => import("./component/ShowProfile"));
 
 const loading = (
   <div className="pt-3 text-center">
@@ -34,6 +35,12 @@ function App() {
             path="/Edit-Contact"
             name="Edit Contact"
             render={(props) => <EditContact {...props} />}
+          />
+          <Route
+            exact
+            path="/Show-Profile"
+            name="Show Profile"
+            render={(props) => <ShowProfile {...props} />}
           />
         </Switch>
       </React.Suspense>

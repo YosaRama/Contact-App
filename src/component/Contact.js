@@ -51,6 +51,14 @@ function Contact() {
     history.push({ pathname: "/Edit-Contact", data: contactData[id] });
   }
 
+  function handleShow(e) {
+    const id = e.target.id;
+    history.push({
+      pathname: "/Show-Profile",
+      data: contactData[id].id,
+    });
+  }
+
   useEffect(() => {
     Axios({
       method: "GET",
@@ -89,6 +97,14 @@ function Contact() {
                   <td>
                     <CButtonGroup>
                       <CButton
+                        color="primary"
+                        id={index}
+                        variant="ghost"
+                        onClick={handleShow}
+                      >
+                        Show
+                      </CButton>
+                      <CButton
                         color="info"
                         variant="outline"
                         id={index}
@@ -111,11 +127,7 @@ function Contact() {
                   <td>
                     <CContainer>
                       <img
-                        src={
-                          item.photo === "N/A" || item.photo === "none"
-                            ? Profile
-                            : item.photo
-                        }
+                        src={item.photo.includes("http") ? item.photo : Profile}
                         alt="none"
                         style={{
                           borderRadius: "100%",
