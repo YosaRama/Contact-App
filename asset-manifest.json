@@ -1,0 +1,36 @@
+{
+  "files": {
+    "static/css/0.6fab625c.chunk.css": "/Contact-App/static/css/0.6fab625c.chunk.css",
+    "static/js/0.6e3dcc48.chunk.js": "/Contact-App/static/js/0.6e3dcc48.chunk.js",
+    "static/js/0.6e3dcc48.chunk.js.map": "/Contact-App/static/js/0.6e3dcc48.chunk.js.map",
+    "main.css": "/Contact-App/static/css/main.343c5528.chunk.css",
+    "main.js": "/Contact-App/static/js/main.671a0ff5.chunk.js",
+    "main.js.map": "/Contact-App/static/js/main.671a0ff5.chunk.js.map",
+    "runtime-main.js": "/Contact-App/static/js/runtime-main.52a67501.js",
+    "runtime-main.js.map": "/Contact-App/static/js/runtime-main.52a67501.js.map",
+    "static/js/3.12a0604e.chunk.js": "/Contact-App/static/js/3.12a0604e.chunk.js",
+    "static/js/3.12a0604e.chunk.js.map": "/Contact-App/static/js/3.12a0604e.chunk.js.map",
+    "static/js/4.ca214e05.chunk.js": "/Contact-App/static/js/4.ca214e05.chunk.js",
+    "static/js/4.ca214e05.chunk.js.map": "/Contact-App/static/js/4.ca214e05.chunk.js.map",
+    "static/js/5.93dbf25d.chunk.js": "/Contact-App/static/js/5.93dbf25d.chunk.js",
+    "static/js/5.93dbf25d.chunk.js.map": "/Contact-App/static/js/5.93dbf25d.chunk.js.map",
+    "static/js/6.dd479220.chunk.js": "/Contact-App/static/js/6.dd479220.chunk.js",
+    "static/js/6.dd479220.chunk.js.map": "/Contact-App/static/js/6.dd479220.chunk.js.map",
+    "static/js/7.aad864da.chunk.js": "/Contact-App/static/js/7.aad864da.chunk.js",
+    "static/js/7.aad864da.chunk.js.map": "/Contact-App/static/js/7.aad864da.chunk.js.map",
+    "index.html": "/Contact-App/index.html",
+    "precache-manifest.7dc00ab4af15129eac3b809587642d2f.js": "/Contact-App/precache-manifest.7dc00ab4af15129eac3b809587642d2f.js",
+    "service-worker.js": "/Contact-App/service-worker.js",
+    "static/css/0.6fab625c.chunk.css.map": "/Contact-App/static/css/0.6fab625c.chunk.css.map",
+    "static/css/main.343c5528.chunk.css.map": "/Contact-App/static/css/main.343c5528.chunk.css.map",
+    "static/js/0.6e3dcc48.chunk.js.LICENSE.txt": "/Contact-App/static/js/0.6e3dcc48.chunk.js.LICENSE.txt",
+    "static/js/3.12a0604e.chunk.js.LICENSE.txt": "/Contact-App/static/js/3.12a0604e.chunk.js.LICENSE.txt",
+    "static/media/profile.jpg": "/Contact-App/static/media/profile.d4b45420.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.52a67501.js",
+    "static/js/3.12a0604e.chunk.js",
+    "static/css/main.343c5528.chunk.css",
+    "static/js/main.671a0ff5.chunk.js"
+  ]
+}
