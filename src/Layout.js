@@ -3,7 +3,7 @@ import Contact from "./component/Contact";
 import ContactHeader from "./component/Header";
 import "./scss/style.scss";
 
-function App() {
+function Layout() {
   return (
     <>
       <ContactHeader />
@@ -12,4 +12,4 @@ function App() {
   );
 }
 
-export default App;
+export default Layout;

@@ -21,9 +21,9 @@ import InputForm from "./InputForm";
 import profile from "./../profile.jpg";
 
 function EditContact() {
+  const history = useHistory();
   const location = useLocation();
   const putData = location.data;
-  const history = useHistory();
   const [editData, setEditData] = useState({
     firstName: putData.firstName,
     lastName: putData.lastName,
