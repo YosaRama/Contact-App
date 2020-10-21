@@ -1,35 +1,41 @@
 import {
+  CAlert,
+  CButton,
   CCard,
   CCardBody,
   CCardHeader,
+  CCol,
   CContainer,
   CForm,
   CFormGroup,
-  CLabel,
-  CCol,
-  CInput,
-  CButton,
-  CRow,
-  CAlert,
   CImg,
+  CInput,
+  CLabel,
+  CRow,
 } from "@coreui/react";
 import Axios from "axios";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import ContactHeader from "./Header";
 import InputForm from "./InputForm";
-import addForm from "./_addForm";
 import profile from "./../profile.jpg";
 
-function AddContact() {
+function EditContact() {
+  const location = useLocation();
+  const putData = location.data;
   const history = useHistory();
-  const [sendForm, setSendForm] = useState({ photo: profile });
+  const [editData, setEditData] = useState({
+    firstName: putData.firstName,
+    lastName: putData.lastName,
+    age: putData.age,
+    photo: putData.photo,
+  });
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setSendForm((prevValue) => {
+    setEditData((prevValue) => {
       return {
         ...prevValue,
         [name]: value,
@@ -38,18 +44,12 @@ function AddContact() {
     setShowAlert(false);
   }
 
-  function handleSubmit(e) {
+  function handleEdit(e) {
     e.preventDefault();
-    parseInt(sendForm.age);
     Axios({
-      method: "POST",
-      url: "https://simple-contact-crud.herokuapp.com/contact",
-      data: {
-        firstName: sendForm.firstName,
-        lastName: sendForm.lastName,
-        age: parseInt(sendForm.age),
-        photo: sendForm.photo,
-      },
+      method: "PUT",
+      url: "https://simple-contact-crud.herokuapp.com/contact/" + putData.id,
+      data: editData,
     })
       .then((res) => {
         console.log(res.data);
@@ -64,11 +64,9 @@ function AddContact() {
   function handleCancel() {
     history.push("/");
   }
-
   return (
     <>
       <ContactHeader />
-
       <CContainer className="mt-2">
         <CAlert color="danger" closeButton fade show={showAlert}>
           <h3>Error Massage</h3>
@@ -80,32 +78,43 @@ function AddContact() {
           <CCardHeader>
             <h1>Edit Contact</h1>
           </CCardHeader>
-          <CContainer>
-            <CImg
-              src={sendForm.photo}
-              alt=""
-              className="d-block center mx-auto my-2"
-              style={{
-                borderRadius: "100%",
-                width: "200px",
-                height: "200px",
-              }}
-            />
-          </CContainer>
           <CCardBody>
+            <CContainer>
+              <CImg
+                src={
+                  editData.photo.includes("https") ? editData.photo : profile
+                }
+                alt=""
+                className="d-block center mx-auto"
+                style={{
+                  borderRadius: "100%",
+                  width: "200px",
+                  height: "200px",
+                }}
+              />
+            </CContainer>
             <CForm>
-              {addForm.map((item, index) => {
-                return (
-                  <InputForm
-                    key={index}
-                    type={item.type}
-                    label={item.label}
-                    name={item.name}
-                    placeholder={item.placeholder}
-                    onChange={handleChange}
-                  />
-                );
-              })}
+              <InputForm
+                type="text"
+                label="First Name"
+                name="firstName"
+                value={editData.firstName}
+                onChange={handleChange}
+              />
+              <InputForm
+                type="text"
+                label="Last Name"
+                name="lastName"
+                value={editData.lastName}
+                onChange={handleChange}
+              />
+              <InputForm
+                type="text"
+                label="Age"
+                name="age"
+                value={editData.age}
+                onChange={handleChange}
+              />
               <CFormGroup className="mx-5">
                 <CLabel>
                   <h5>Image Link</h5>
@@ -113,24 +122,25 @@ function AddContact() {
                 <CCol lg={10}>
                   <CInput
                     id="photo"
-                    type="link"
+                    type="text"
                     name="photo"
-                    placeholder="Import your picture Link"
+                    value={editData.photo}
                     onChange={handleChange}
                   />
                 </CCol>
               </CFormGroup>
+
               <CRow>
                 <CCol lg={5} />
                 <CCol lg={7} className="my-5">
                   <CButton
                     size="lg"
-                    color="success"
+                    color="info"
                     className="mx-2"
                     variant="ghost"
-                    onClick={handleSubmit}
+                    onClick={handleEdit}
                   >
-                    Submit
+                    Edit
                   </CButton>
                   <CButton
                     size="lg"
@@ -151,4 +161,4 @@ function AddContact() {
   );
 }
 
-export default AddContact;
+export default EditContact;

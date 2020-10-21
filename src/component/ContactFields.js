@@ -1,5 +1,11 @@
 const ContactFields = [
-  { key: "image", _style: { width: "5%" } },
+  {
+    key: "image",
+    _style: { width: "5%" },
+    sorter: false,
+    filter: false,
+    label: "",
+  },
   { key: "firstName" },
   { key: "lastName" },
   { key: "age" },

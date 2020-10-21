@@ -1,8 +1,11 @@
 import React from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import "./scss/style.scss";
+
 const Layout = React.lazy(() => import("./Layout"));
 const AddContact = React.lazy(() => import("./component/AddContact"));
+const EditContact = React.lazy(() => import("./component/EditContact"));
+
 const loading = (
   <div className="pt-3 text-center">
     <div className="sk-spinner sk-spinner-pulse"></div>
@@ -25,6 +28,12 @@ function App() {
             path="/Add-Contact"
             name="Add Contact"
             render={(props) => <AddContact {...props} />}
+          />
+          <Route
+            exact
+            path="/Edit-Contact"
+            name="Edit Contact"
+            render={(props) => <EditContact {...props} />}
           />
         </Switch>
       </React.Suspense>

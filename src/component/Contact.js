@@ -16,9 +16,39 @@ import { useHistory } from "react-router-dom";
 function Contact() {
   let history = useHistory();
   const [contactData, setcontactData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleClick() {
     history.push("/Add-Contact");
+  }
+
+  function handleDelete(e) {
+    const id = e.target.id;
+    const DeleteID = contactData[id].id;
+
+    Axios({
+      method: "DELETE",
+      url: "https://simple-contact-crud.herokuapp.com/contact/" + DeleteID,
+    })
+      .then((res) => {
+        console.log(id);
+        console.log(contactData[id].id);
+        let deleteItem = contactData.splice(id, 1);
+        setcontactData(contactData.splice(deleteItem, contactData.length));
+      })
+      .catch((err) => {
+        console.log(err);
+
+        ////// API DELETE ERROR ---- THIS SECTION JUST SHOW IF IT'S WORK //////
+
+        let deleteItem = contactData.splice(id, 1);
+        setcontactData(contactData.splice(deleteItem, contactData.length));
+      });
+  }
+
+  function handleEdit(e) {
+    const id = e.target.id;
+    history.push({ pathname: "/Edit-Contact", data: contactData[id] });
   }
 
   useEffect(() => {
@@ -30,7 +60,7 @@ function Contact() {
       },
     }).then((res) => {
       setcontactData(res.data.data);
-      console.log(res.data.data[5].photo);
+      setIsLoading(false);
     });
   }, []);
 
@@ -39,11 +69,12 @@ function Contact() {
       <CContainer className="my-5">
         <CCard>
           <CCardHeader>
-            <h1>My Contact</h1>
+            <h1>Contact List</h1>
           </CCardHeader>
           <CCardBody>
             <CDataTable
               responsive
+              loading={isLoading}
               items={contactData}
               fields={ContactFields}
               columnFilter
@@ -54,13 +85,23 @@ function Contact() {
               sorter
               pagination
               scopedSlots={{
-                action: (item) => (
+                action: (item, index) => (
                   <td>
                     <CButtonGroup>
-                      <CButton color="info" variant="outline">
+                      <CButton
+                        color="info"
+                        variant="outline"
+                        id={index}
+                        onClick={handleEdit}
+                      >
                         Edit
                       </CButton>
-                      <CButton color="danger" variant="outline">
+                      <CButton
+                        color="danger"
+                        variant="outline"
+                        id={index}
+                        onClick={handleDelete}
+                      >
                         Delete
                       </CButton>
                     </CButtonGroup>
