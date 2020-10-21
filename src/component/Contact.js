@@ -30,10 +30,9 @@ function Contact() {
       },
     }).then((res) => {
       setcontactData(res.data.data);
+      console.log(res.data.data[5].photo);
     });
   }, []);
-
-  console.log(contactData);
 
   return (
     <>
@@ -71,8 +70,12 @@ function Contact() {
                   <td>
                     <CContainer>
                       <img
-                        src={item.photo === "N/A" ? Profile : item.photo}
-                        alt=""
+                        src={
+                          item.photo === "N/A" || item.photo === "none"
+                            ? Profile
+                            : item.photo
+                        }
+                        alt="none"
                         style={{
                           borderRadius: "100%",
                           width: "50px",
