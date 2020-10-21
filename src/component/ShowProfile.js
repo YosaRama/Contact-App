@@ -43,7 +43,7 @@ function ShowProfile() {
           </CCardHeader>
           <CCardBody>
             <CRow>
-              <CCol lg={5}>
+              <CCol lg={4} sm={3} md={6} className="mx-auto">
                 <CImg
                   src={
                     Data.photo !== "undefined" || Data.photo.includes("https")
@@ -51,11 +51,11 @@ function ShowProfile() {
                       : profile
                   }
                   alt=""
-                  className="d-block"
-                  style={{ width: "330px", height: "330px" }}
+                  className="d-inline"
+                  style={{ width: "280px", height: "280px" }}
                 />
               </CCol>
-              <CCol lg={6} className="mx-0">
+              <CCol lg={8} md={6} className="mx-auto">
                 <h1>{Data.firstName + " " + Data.lastName}</h1>
                 <hr />
                 <p> First Name : {Data.firstName}</p>
